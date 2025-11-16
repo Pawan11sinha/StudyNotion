@@ -49,7 +49,7 @@ exports.createCourse=async(req,res)=>{
             instructor:instructorDetails._id,
             whatYouWillLearn:whatYouWillLearn,
             // ye CategoryDetails.id dalne k liye uppr category walla fetch kiyes
-            Category:CategoryDetails.id,
+            Category:CategoryDetails._id,
             price,
             thumbnail:thumbnailImage.secure_url,
 
