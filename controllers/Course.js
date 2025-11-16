@@ -55,7 +55,7 @@ exports.createCourse=async(req,res)=>{
 
         })
 // user update add te new course to user schema of instructor
-await User.findByIdAndUpdate(
+await User.findByIdAndUpdate( 
     instructorDetails._id,
     { $push: { courses: newcourse._id }},
     { new: true }
