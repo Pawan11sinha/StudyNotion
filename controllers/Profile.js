@@ -19,7 +19,8 @@ exports.updateProfile=async(req,res)=>{
             })
         }
         // find profile phaile user id sei userdetails laye phir additionaldetails laye usko profile mei check kiye
-       const userDetails=await User.findById(id);
+    //   agr profile create nhi hua hota to create krte phir user mei dal dete  
+        const userDetails=await User.findById(id);
        const profileId=userDetails.additionalDetails;
        const profileDetails=await Profile.findById(profileId)
         // uupdate profile 2 method h ek create aur ek save yha pe object bna hua h save method ka use kro 
