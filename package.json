@@ -19,6 +19,7 @@
     "mailsender": "^1.1.2",
     "mongoose": "^8.19.4",
     "nodemon": "^3.1.11",
-    "otp-generator": "^4.0.1"
+    "otp-generator": "^4.0.1",
+    "razorpay": "^2.9.6"
   }
 }
