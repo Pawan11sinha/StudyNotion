@@ -125,6 +125,7 @@ exports.getAverageRating=async(req,res)=>{
 exports.getAllRating=async(req,res)=>{
 try {
     const allReviews=await RatingAndReview.find({})
+    // des order se aayega reviews sort kiye h 
                                     .sort({rating:"desc"})
                                     .populate({
                                         path:"user",
