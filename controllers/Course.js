@@ -114,3 +114,49 @@ exports.showAllCourses=async (req,res)=>{
         
     }
 }
+
+exports.getCourseDetails=async(req,res)=>{
+    try {
+        // get id 
+        const {courseId}=req.body;
+        // find course details course ka pura details obj id nhi uske andr ka sbkuch le liye 
+        const CourseDetails= await Course.findById(
+                                            {_id:courseId})
+                                            .populate(
+                                                {
+                                                    // yha pe instructor k andr additional detali ki obj id h sbko populate kro 
+                                                    path:"instructor",
+                                                    populate:{
+                                                        path:{
+                                                            path:"additionalDetails",
+                                                        }
+                                                    }
+
+                                                }
+                                            )
+                                            .populate("category")
+                                            .populate("ratingAndReviews")
+                                            .populate({
+                                                path:"courseContent",
+                                                populate:{
+                                                    path:"subSection",
+                                                },
+                                            })
+                                            .exec();
+      if(!CourseDetails){
+        return res.status(400).json({
+            success:false,
+            message:`could not find the course with ${courseId}`,
+            data:CourseDetails,
+        })
+      }
+        
+    } catch (error) {
+        console.log(error);
+        return response.status(500).json({
+            success:false,
+            message:error.message
+        })
+        
+    }
+}
